@@ -5,7 +5,7 @@
   <title>Scoped CSS Variables and JS</title>
 </head>
 <body>
-  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+  <h1>Update CSS Variables with <span class='hl2'>JS</span>🎨</h1>
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
@@ -15,12 +15,43 @@
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
     <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#ffc600">
+    <input id="base" type="color" name="base" value="#550C18">
   </div>
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
-
+  <h2>Made with 🧡 by
+  <a href="https://www.github.com/Sumit-Budhiraja"><b>Sumit Budhiraja</b></a></h2>
+  <h3>To know more about this challenge visit <a href="https://javascript30.com/">here</a></h3>
   <style>
+    :root {
+      --base: #550C18;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl2 {
+      color: var(--base);
+    }
+    h2{
+	text-align: center;
+	color: #FCFAFA;
+	font-size: 25px;
+}
+h3{
+	text-align: center;
+	color: #FCFAFA;
+	font-size: 15px;
+}
+a{
+	min-height: 120vh;
+	color: #DDFC74;
+}
 
     /*
       misc styles, nothing to do with CSS variables
@@ -28,11 +59,11 @@
 
     body {
       text-align: center;
-      background: #193549;
+      background: #EB4511;
       color: white;
       font-family: 'helvetica neue', sans-serif;
       font-weight: 100;
-      font-size: 50px;
+      font-size: 30px;
     }
 
     .controls {
@@ -45,7 +76,17 @@
   </style>
 
   <script>
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
+
 
 </body>
 </html>
